@@ -8,20 +8,26 @@
   <body style="margin: 0; overflow: hidden;">
     <a-scene embedded arjs>
       
-      <!-- marcador hiro con cubo -->
+      <!-- marcador con cubo -->
       <a-marker preset="hiro">
-        <a-box class="clickable"
+        <a-box id="cubito"
                position="0 0.5 0"
-               material="color: orange"
-               event-set__click="_event: click; material.color: green">
+               material="color: orange">
         </a-box>
       </a-marker>
 
-      <!-- cámara + cursor para detectar clics -->
-      <a-entity camera look-controls>
-        <a-cursor raycaster="objects: .clickable"></a-cursor>
-      </a-entity>
-      
+      <!-- cámara -->
+      <a-entity camera></a-entity>
     </a-scene>
+
+    <!-- JavaScript que detecta el clic -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const cubo = document.querySelector('#cubito');
+        cubo.addEventListener('click', () => {
+          cubo.setAttribute('material', 'color', 'green');
+        });
+      });
+    </script>
   </body>
 </html>
