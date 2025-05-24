@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cubo interactivo en RA</title>
+    <title>RA con botón</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <style>
+      #cambiar-color {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 12px 20px;
+        background: #2e8b57;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        z-index: 999;
+      }
+    </style>
   </head>
   <body style="margin: 0; overflow: hidden;">
+
+    <!-- Botón flotante -->
+    <button id="cambiar-color">Cambiar color del cubo</button>
+
+    <!-- Escena RA -->
     <a-scene embedded arjs>
-      
-      <!-- marcador con cubo -->
       <a-marker preset="hiro">
         <a-box id="cubito"
                position="0 0.5 0"
@@ -16,17 +34,15 @@
         </a-box>
       </a-marker>
 
-      <!-- cámara -->
       <a-entity camera></a-entity>
     </a-scene>
 
-    <!-- JavaScript que detecta el clic -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const cubo = document.querySelector('#cubito');
-        cubo.addEventListener('click', () => {
-          cubo.setAttribute('material', 'color', 'green');
-        });
+      const boton = document.getElementById('cambiar-color');
+      const cubo = document.getElementById('cubito');
+
+      boton.addEventListener('click', () => {
+        cubo.setAttribute('material', 'color', 'green');
       });
     </script>
   </body>
