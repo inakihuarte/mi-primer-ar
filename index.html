@@ -20,30 +20,18 @@
       }
     </style>
   </head>
+
   <body style="margin: 0; overflow: hidden;">
 
     <!-- Botón flotante -->
     <button id="cambiar-color">Cambiar color del cubo</button>
 
-    <!-- Escena RA -->
-    <a-scene embedded arjs>
+    <!-- Escena AR con dom-overlay activo -->
+    <a-scene
+      embedded
+      arjs
+      webxr="requiredFeatures: dom-overlay; domOverlay: {root: document.body}">
+
       <a-marker preset="hiro">
         <a-box id="cubito"
-               position="0 0.5 0"
-               material="color: orange">
-        </a-box>
-      </a-marker>
-
-      <a-entity camera></a-entity>
-    </a-scene>
-
-    <script>
-      const boton = document.getElementById('cambiar-color');
-      const cubo = document.getElementById('cubito');
-
-      boton.addEventListener('click', () => {
-        cubo.setAttribute('material', 'color', 'green');
-      });
-    </script>
-  </body>
-</html>
+               position="0 0
